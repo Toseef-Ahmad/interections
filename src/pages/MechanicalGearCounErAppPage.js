@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import PageWrapper from '../components/PageWrapper';
 
 // Configuration
 const NUM_GEARS = 3;
@@ -155,6 +156,12 @@ const App = () => {
 
     // JSX structure adapted from the original HTML
     return (
+        <PageWrapper
+            title="Mechanical Gear Counter"
+            description="Interactive mechanical gear counter with addition and subtraction operations. Experience core mathematical operations with visual gear animations."
+            keywords="gear counter, mechanical calculator, react, interactive, math, addition, subtraction"
+            url="/mechanical-gear-coun-er-app"
+        >
         <div className="bg-gray-900 min-h-screen flex flex-col items-center p-8 font-inter text-white">
             {/* FIX: Replaced non-standard style attributes with dangerouslySetInnerHTML */}
             <style dangerouslySetInnerHTML={{__html: `
@@ -332,6 +339,7 @@ const App = () => {
                 </div>
             </div>
         </div>
+        </PageWrapper>
     );
 };
 

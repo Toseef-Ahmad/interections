@@ -74,6 +74,13 @@
   font-size: 1.5rem;
 }
 
+.page-description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
 .page-link {
   display: inline-block;
   color: #667eea;

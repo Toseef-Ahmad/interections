@@ -1,6 +1,14 @@
 # Interections
 
-A single React application hosting multiple interactive component pages, deployed on GitHub Pages.
+A collection of **free online interactive calculators and math tools** built with React. Features Pascal's Triangle Calculator, Matrix Calculator, Mechanical Calculator, and more. All tools include step-by-step solutions, visual feedback, and educational resources. Perfect for students, teachers, and professionals.
+
+**Popular Tools:**
+- 🧮 Mechanical Gear Calculator
+- 📐 Matrix Calculator (coming soon)
+- 🔺 Pascal's Triangle Calculator (coming soon)
+- 🔢 And many more interactive math tools!
+
+Deployed on GitHub Pages with full SEO optimization.
 
 ## 🚀 Quick Start
 
@@ -51,21 +59,30 @@ interections/
 └── package.json
 ```
 
-## ➕ Adding a New Page Component
+## ➕ Adding a New Interactive Tool
 
 ### Quick Method
 
 Simply run:
 
 ```bash
-npm run create:page xyz
+npm run create:page pascals-triangle-calculator
 ```
 
 This will:
-- Create `src/pages/XyzPage.js` component
-- Register it in `src/pages/index.js`
-- Make it accessible at `/xyz` route
+- Create `src/pages/PascalsTriangleCalculatorPage.js` component
+- Register it in `src/pages/index.js` with SEO metadata
+- Make it accessible at `/pascals-triangle-calculator` route
 - Appear automatically on the home page
+
+### Popular Tools to Build
+
+See [INTERACTIVE_TOOLS_GUIDE.md](./INTERACTIVE_TOOLS_GUIDE.md) for:
+- Popular tool categories (Calculators, Visualizations, Linear Algebra, etc.)
+- SEO-friendly description templates
+- Popular keywords to target
+- Step-by-step creation guide
+- Examples: Pascal's Triangle, Matrix Inverse, etc.
 
 ### Manual Method
 

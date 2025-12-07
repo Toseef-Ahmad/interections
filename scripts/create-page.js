@@ -55,6 +55,29 @@ try {
   pageContent = pageContent.replace(/ExamplePage/g, componentName);
   pageContent = pageContent.replace(/Example Component/g, displayName);
   pageContent = pageContent.replace(/example/g, pageName);
+  
+  // Add PageWrapper import if not present
+  if (!pageContent.includes("import PageWrapper")) {
+    pageContent = pageContent.replace(
+      /import React from 'react';/,
+      `import React from 'react';\nimport PageWrapper from '../components/PageWrapper';`
+    );
+  }
+  
+  // Wrap content with PageWrapper if not already wrapped
+  if (!pageContent.includes('<PageWrapper')) {
+    // Find the return statement and wrap content
+    pageContent = pageContent.replace(
+      /return \(\s*<div className="component-page">/,
+      `return (\n    <PageWrapper\n      title="${displayName}"\n      description="Interactive ${displayName.toLowerCase()} component built with React."\n      keywords="react, component, interactive, ${pageName}"\n      url="/${pageName}"\n    >\n      <div className="component-page">`
+    );
+    
+    // Close PageWrapper before the closing of the component
+    pageContent = pageContent.replace(
+      /(\s*)<\/div>\s*\);\s*}\s*export default/,
+      `$1</div>\n    </PageWrapper>\n  );\n}\n\nexport default`
+    );
+  }
 
   // Write new page file
   fs.writeFileSync(newPagePath, pageContent);
