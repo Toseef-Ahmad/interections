@@ -1,6 +1,5 @@
 import React from 'react';
 import SEO from './SEO';
-import './PageWrapper.css';
 
 function PageWrapper({ 
   children, 

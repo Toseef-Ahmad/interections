@@ -1,0 +1,79 @@
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  align-items: center;
+  margin-bottom: 40px;
+  margin-top: 56px;
+  padding-top: 20px;
+  padding-bottom: 12px;
+  border-top: 1px solid #3e3e42;
+  border-bottom: 1px solid #3e3e42;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-label {
+  color: #858585;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 6px 14px;
+  background-color: #252526;
+  border: 1px solid #3e3e42;
+  border-radius: 8px;
+  color: #cccccc;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #2a2d2e;
+  border-color: #454545;
+}
+
+.filter-button.active {
+  background-color: #007acc;
+  border-color: #007acc;
+  color: #ffffff;
+}
+
+.filter-select {
+  padding: 6px 14px;
+  background-color: #252526;
+  border: 1px solid #3e3e42;
+  border-radius: 8px;
+  color: #cccccc;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-select:hover {
+  border-color: #454545;
+}
+
+.filter-select:focus {
+  border-color: #007acc;
+  box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
+
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

@@ -107,7 +107,7 @@ try {
       cleanContent = cleanContent.slice(0, -1).trim();
     }
     
-    const newPageEntry = `  {\n    name: '${pageName}',\n    component: ${componentName},\n  }`;
+    const newPageEntry = `  {\n    name: '${pageName}',\n    component: ${componentName},\n    title: '${displayName}',\n    description: 'Interactive ${displayName.toLowerCase()} component built with React.',\n    keywords: 'react, component, interactive, ${pageName}',\n    category: 'Calculators',\n    tags: ['calculator', 'interactive', '${pageName}'],\n    featured: false,\n    views: 0,\n    rating: 0,\n    createdAt: new Date().toISOString(),\n  }`;
     
     // Build the new array content
     const newArrayContent = hasContent 

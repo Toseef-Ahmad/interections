@@ -40,6 +40,9 @@ const MechanicalGearCounErAppPage = () => {
     const [statusMessage, setStatusMessage] = useState('Gears initialized and set to 0. Ready to calculate!');
     const [isAnimating, setIsAnimating] = useState(false);
 
+    // Debug: Log that component is rendering
+    console.log('MechanicalGearCounErAppPage is rendering');
+
     // Function to pause animation
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -157,29 +160,47 @@ const MechanicalGearCounErAppPage = () => {
 
     // JSX structure adapted from the original HTML
     return (
-        <>
+        <div style={{ 
+            minHeight: '100vh', 
+            width: '100%',
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'flex-start',
+            margin: 0, 
+            padding: 0,
+            backgroundColor: '#1e1e1e', 
+            color: '#cccccc',
+            boxSizing: 'border-box',
+            position: 'relative'
+        }}>
         <PageWrapper
             title="Mechanical Gear Counter"
             description="Interactive mechanical gear counter with addition and subtraction operations. Experience core mathematical operations with visual gear animations."
             keywords="gear counter, mechanical calculator, react, interactive, math, addition, subtraction"
-            url="/mechanical-gear-coun-er-app"
+            url="/mechanical-gear-calculator"
         />
-        <nav className="nav-bar" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000 }}>
-          <Link to="/" className="nav-link">← Back to Home</Link>
+        <nav className="nav-bar" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000, width: '100%', backgroundColor: '#252526', borderBottom: '1px solid #3e3e42' }}>
+          <Link to="/" style={{ color: '#cccccc', textDecoration: 'none', fontSize: '14px', padding: '4px 8px' }}>← Back to Home</Link>
         </nav>
         <div style={{ 
-            minHeight: '100vh', 
+            width: '100%',
+            maxWidth: '1200px',
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: 'center', 
             justifyContent: 'flex-start',
             margin: 0, 
             padding: '2rem', 
-            width: '100%', 
             paddingTop: '80px', 
             backgroundColor: '#1e1e1e', 
-            color: '#cccccc',
-            boxSizing: 'border-box'
+            color: '#ffffff',
+            boxSizing: 'border-box',
+            position: 'relative',
+            zIndex: 1,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            minHeight: 'calc(100vh - 80px)'
         }}>
             {/* FIX: Replaced non-standard style attributes with dangerouslySetInnerHTML */}
             <style dangerouslySetInnerHTML={{__html: `
@@ -267,15 +288,15 @@ const MechanicalGearCounErAppPage = () => {
                 maxWidth: '900px', 
                 width: '100%', 
                 backgroundColor: '#252526', 
-                padding: '2rem', 
-                borderRadius: '4px', 
+                padding: '32px', 
+                borderRadius: '6px', 
                 border: '1px solid #3e3e42',
                 boxSizing: 'border-box'
             }}>
-                <h1 style={{ fontSize: '1.5rem', fontWeight: '500', marginBottom: '1rem', color: '#ffffff', textAlign: 'center' }}>
+                <h1 style={{ fontSize: '24px', fontWeight: '500', marginBottom: '8px', color: '#ffffff', textAlign: 'center' }}>
                     Mechanical Gear Counter
                 </h1>
-                <p style={{ textAlign: 'center', color: '#858585', marginBottom: '2rem', fontSize: '0.875rem' }}>
+                <p style={{ textAlign: 'center', color: '#858585', marginBottom: '24px', fontSize: '14px' }}>
                     Experience the core operations. <strong>Addition</strong> triggers a carry. <strong>Subtraction</strong> triggers a borrow.
                 </p>
 
@@ -284,12 +305,12 @@ const MechanicalGearCounErAppPage = () => {
                     display: 'flex', 
                     justifyContent: 'center', 
                     alignItems: 'center', 
-                    padding: '1.5rem', 
+                    padding: '24px', 
                     backgroundColor: '#1e1e1e', 
-                    borderRadius: '4px', 
+                    borderRadius: '6px', 
                     border: '1px solid #3e3e42', 
-                    marginBottom: '1.5rem',
-                    gap: '1rem',
+                    marginBottom: '24px',
+                    gap: '16px',
                     flexWrap: 'wrap'
                 }}>
                     {/* Render gears from highest order (left) to lowest order (right) */}
@@ -310,7 +331,7 @@ const MechanicalGearCounErAppPage = () => {
                     alignItems: 'center', 
                     gap: '1rem', 
                     padding: '1.5rem', 
-                    backgroundColor: '#1e1e1e', 
+                    backgroundColor: '#252526', 
                     borderRadius: '4px', 
                     border: '1px solid #3e3e42' 
                 }}>
@@ -417,7 +438,7 @@ const MechanicalGearCounErAppPage = () => {
                 </div>
             </div>
         </div>
-        </>
+        </div>
     );
 };
 

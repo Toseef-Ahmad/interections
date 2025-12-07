@@ -61,19 +61,26 @@ interections/
 
 ## ➕ Adding a New Interactive Tool
 
-### Quick Method
+### 📚 Complete Guide
 
-Simply run:
+**👉 See [PAGE_CREATION_GUIDE.md](./PAGE_CREATION_GUIDE.md) for the complete guide** covering:
+- Step-by-step page creation (script & manual methods)
+- SEO best practices and metadata requirements
+- Naming conventions and file structure
+- Content guidelines and examples
+- Testing and deployment procedures
+
+### Quick Start
 
 ```bash
-npm run create:page pascals-triangle-calculator
+npm run create:page your-tool-name
 ```
 
-This will:
-- Create `src/pages/PascalsTriangleCalculatorPage.js` component
-- Register it in `src/pages/index.js` with SEO metadata
-- Make it accessible at `/pascals-triangle-calculator` route
-- Appear automatically on the home page
+This automatically:
+- ✅ Creates the component file
+- ✅ Registers it in routing
+- ✅ Sets up basic SEO metadata
+- ✅ Generates the correct URL structure
 
 ### Popular Tools to Build
 
@@ -81,43 +88,7 @@ See [INTERACTIVE_TOOLS_GUIDE.md](./INTERACTIVE_TOOLS_GUIDE.md) for:
 - Popular tool categories (Calculators, Visualizations, Linear Algebra, etc.)
 - SEO-friendly description templates
 - Popular keywords to target
-- Step-by-step creation guide
 - Examples: Pascal's Triangle, Matrix Inverse, etc.
-
-### Manual Method
-
-1. Create a new component file in `src/pages/`:
-```javascript
-// src/pages/XyzPage.js
-import React from 'react';
-import './PageTemplate.css';
-
-function XyzPage() {
-  return (
-    <div className="component-page">
-      <h1>XYZ Component</h1>
-      <div className="component-content">
-        {/* Your component code here */}
-      </div>
-    </div>
-  );
-}
-
-export default XyzPage;
-```
-
-2. Register it in `src/pages/index.js`:
-```javascript
-import XyzPage from './XyzPage';
-
-const pages = [
-  // ... existing pages
-  {
-    name: 'xyz',
-    component: XyzPage,
-  },
-];
-```
 
 ## 🛠️ Development
 
