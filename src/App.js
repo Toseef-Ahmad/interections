@@ -91,7 +91,6 @@ function Layout({ children }) {
 // Wrapper component to add SEO to each page
 function PageRoute({ page }) {
   const PageComponent = page.component;
-  const isFullPage = page.name.includes('mechanical-gear');
   
   return (
     <>
