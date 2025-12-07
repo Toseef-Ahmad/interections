@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import PageWrapper from '../components/PageWrapper';
 
 // Configuration
@@ -30,7 +31,7 @@ const Gear = React.memo(({ index, digit, rotation }) => {
 });
 
 // Main Application Component
-const App = () => {
+const MechanicalGearCounErAppPage = () => {
     // State initialization
     const [digits, setDigits] = useState(new Array(NUM_GEARS).fill(0)); // [Units, Tens, Hundreds]
     const [totalRotation, setTotalRotation] = useState(new Array(NUM_GEARS).fill(0));
@@ -156,13 +157,30 @@ const App = () => {
 
     // JSX structure adapted from the original HTML
     return (
+        <>
         <PageWrapper
             title="Mechanical Gear Counter"
             description="Interactive mechanical gear counter with addition and subtraction operations. Experience core mathematical operations with visual gear animations."
             keywords="gear counter, mechanical calculator, react, interactive, math, addition, subtraction"
             url="/mechanical-gear-coun-er-app"
-        >
-        <div className="bg-gray-900 min-h-screen flex flex-col items-center p-8 font-inter text-white">
+        />
+        <nav className="nav-bar" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000 }}>
+          <Link to="/" className="nav-link">← Back to Home</Link>
+        </nav>
+        <div style={{ 
+            minHeight: '100vh', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'flex-start',
+            margin: 0, 
+            padding: '2rem', 
+            width: '100%', 
+            paddingTop: '80px', 
+            backgroundColor: '#1e1e1e', 
+            color: '#cccccc',
+            boxSizing: 'border-box'
+        }}>
             {/* FIX: Replaced non-standard style attributes with dangerouslySetInnerHTML */}
             <style dangerouslySetInnerHTML={{__html: `
                 /* Global styles for the gear visuals */
@@ -245,16 +263,35 @@ const App = () => {
                 }
             `}} />
 
-            <div className="max-w-4xl w-full bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700">
-                <h1 className="text-4xl font-extrabold text-center mb-4 text-emerald-400">
-                    Mechanical Gear Counter (React)
+            <div style={{ 
+                maxWidth: '900px', 
+                width: '100%', 
+                backgroundColor: '#252526', 
+                padding: '2rem', 
+                borderRadius: '4px', 
+                border: '1px solid #3e3e42',
+                boxSizing: 'border-box'
+            }}>
+                <h1 style={{ fontSize: '1.5rem', fontWeight: '500', marginBottom: '1rem', color: '#ffffff', textAlign: 'center' }}>
+                    Mechanical Gear Counter
                 </h1>
-                <p className="text-center text-gray-400 mb-8">
-                    Experience the core operations. **Addition** triggers a carry. **Subtraction** triggers a borrow.
+                <p style={{ textAlign: 'center', color: '#858585', marginBottom: '2rem', fontSize: '0.875rem' }}>
+                    Experience the core operations. <strong>Addition</strong> triggers a carry. <strong>Subtraction</strong> triggers a borrow.
                 </p>
 
                 {/* Gear Display Area */}
-                <div id="gear-assembly" className="flex justify-center items-center p-6 bg-gray-700 rounded-lg border-2 border-gray-600 shadow-inner space-x-8">
+                <div id="gear-assembly" style={{ 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center', 
+                    padding: '1.5rem', 
+                    backgroundColor: '#1e1e1e', 
+                    borderRadius: '4px', 
+                    border: '1px solid #3e3e42', 
+                    marginBottom: '1.5rem',
+                    gap: '1rem',
+                    flexWrap: 'wrap'
+                }}>
                     {/* Render gears from highest order (left) to lowest order (right) */}
                     {digits.slice().reverse().map((digit, index) => (
                         <Gear 
@@ -267,37 +304,46 @@ const App = () => {
                 </div>
 
                 {/* Input and Controls */}
-                <div className="mt-10 p-6 bg-gray-700 rounded-lg flex flex-col items-center space-y-4">
+                <div style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    gap: '1rem', 
+                    padding: '1.5rem', 
+                    backgroundColor: '#1e1e1e', 
+                    borderRadius: '4px', 
+                    border: '1px solid #3e3e42' 
+                }}>
                     
                     {/* Operation Selector */}
-                    <div className="flex space-x-6">
-                        <label className="inline-flex items-center text-xl font-semibold text-gray-200">
+                    <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                        <label style={{ display: 'inline-flex', alignItems: 'center', fontSize: '0.875rem', color: '#cccccc', cursor: 'pointer' }}>
                             <input 
                                 type="radio" 
                                 name="operation" 
                                 value="add" 
                                 checked={operation === 'add'} 
                                 onChange={() => setOperation('add')}
-                                className="form-radio h-5 w-5 text-emerald-600 focus:ring-emerald-500"
+                                style={{ marginRight: '0.5rem', cursor: 'pointer' }}
                                 disabled={isAnimating}
                             />
-                            <span className="ml-2">Addition (+)</span>
+                            Addition (+)
                         </label>
-                        <label className="inline-flex items-center text-xl font-semibold text-gray-200">
+                        <label style={{ display: 'inline-flex', alignItems: 'center', fontSize: '0.875rem', color: '#cccccc', cursor: 'pointer' }}>
                             <input 
                                 type="radio" 
                                 name="operation" 
                                 value="subtract" 
                                 checked={operation === 'subtract'} 
                                 onChange={() => setOperation('subtract')}
-                                className="form-radio h-5 w-5 text-red-600 focus:ring-red-500"
+                                style={{ marginRight: '0.5rem', cursor: 'pointer' }}
                                 disabled={isAnimating}
                             />
-                            <span className="ml-2">Subtraction (-)</span>
+                            Subtraction (-)
                         </label>
                     </div>
                     
-                    <label htmlFor="op-input" className="text-xl font-semibold text-gray-200 mt-4">
+                    <label htmlFor="op-input" style={{ fontSize: '0.875rem', color: '#cccccc', marginTop: '0.5rem' }}>
                         Number to Use in Operation (Max 999):
                     </label>
                     <input 
@@ -307,39 +353,71 @@ const App = () => {
                         onChange={(e) => setInputAmount(e.target.value)}
                         min="1" 
                         max="999" 
-                        className="w-32 text-center p-2 rounded-lg bg-gray-900 text-emerald-400 border border-emerald-500 focus:ring-2 focus:ring-emerald-300 transition"
+                        style={{ 
+                            width: '120px', 
+                            textAlign: 'center', 
+                            padding: '0.5rem', 
+                            borderRadius: '4px', 
+                            backgroundColor: '#3c3c3c', 
+                            color: '#4ec9b0', 
+                            border: '1px solid #3e3e42',
+                            fontSize: '0.875rem',
+                            outline: 'none'
+                        }}
+                        onFocus={(e) => e.target.style.borderColor = '#007acc'}
+                        onBlur={(e) => e.target.style.borderColor = '#3e3e42'}
                         disabled={isAnimating}
                     />
                     
                     <button 
                         onClick={performOperation} 
-                        className={`px-6 py-3 text-white font-bold rounded-lg shadow-lg transform transition duration-150 active:scale-95 ${
-                            isAnimating 
-                                ? 'bg-gray-500 cursor-not-allowed' 
-                                : operation === 'add' 
-                                    ? 'bg-emerald-600 hover:bg-emerald-500' 
-                                    : 'bg-red-600 hover:bg-red-500'
-                        }`}
+                        style={{
+                            padding: '0.5rem 1.5rem',
+                            color: '#ffffff',
+                            fontWeight: '400',
+                            borderRadius: '4px',
+                            border: 'none',
+                            fontSize: '0.875rem',
+                            cursor: isAnimating ? 'not-allowed' : 'pointer',
+                            backgroundColor: isAnimating ? '#3c3c3c' : (operation === 'add' ? '#007acc' : '#c7254e'),
+                            opacity: isAnimating ? 0.6 : 1,
+                            transition: 'opacity 0.2s ease'
+                        }}
                         disabled={isAnimating}
+                        onMouseEnter={(e) => !isAnimating && (e.target.style.opacity = '0.8')}
+                        onMouseLeave={(e) => !isAnimating && (e.target.style.opacity = '1')}
                     >
                         {isAnimating ? 'Calculating...' : `Execute ${operation === 'add' ? 'Addition' : 'Subtraction'}`}
                     </button>
                     
                     <button 
                         onClick={initializeGears} 
-                        className="px-4 py-2 bg-gray-500 hover:bg-gray-400 text-white font-medium rounded-lg shadow-md transform transition duration-150 active:scale-95"
+                        style={{
+                            padding: '0.5rem 1rem',
+                            backgroundColor: '#3c3c3c',
+                            color: '#cccccc',
+                            fontWeight: '400',
+                            borderRadius: '4px',
+                            border: '1px solid #3e3e42',
+                            fontSize: '0.875rem',
+                            cursor: isAnimating ? 'not-allowed' : 'pointer',
+                            opacity: isAnimating ? 0.6 : 1,
+                            transition: 'opacity 0.2s ease'
+                        }}
                         disabled={isAnimating}
+                        onMouseEnter={(e) => !isAnimating && (e.target.style.backgroundColor = '#454545')}
+                        onMouseLeave={(e) => !isAnimating && (e.target.style.backgroundColor = '#3c3c3c')}
                     >
                         Reset Gears to 0
                     </button>
                 </div>
 
-                <div id="status-message" className="mt-6 text-center text-lg h-8">
+                <div id="status-message" style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.875rem', color: '#858585', minHeight: '2rem' }}>
                     {statusMessage}
                 </div>
             </div>
         </div>
-        </PageWrapper>
+        </>
     );
 };
 

@@ -91,6 +91,8 @@ function Layout({ children }) {
 // Wrapper component to add SEO to each page
 function PageRoute({ page }) {
   const PageComponent = page.component;
+  const isFullPage = page.name.includes('mechanical-gear');
+  
   return (
     <>
       {page.title && (
@@ -111,19 +113,28 @@ function PageRoute({ page }) {
 function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {pages.map((page) => (
+      <Routes>
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        {pages.map((page) => {
+          const isFullPage = page.name.includes('mechanical-gear');
+          return (
             <Route
               key={page.name}
               path={`/${page.name}`}
-              element={<PageRoute page={page} />}
+              element={
+                isFullPage ? (
+                  <PageRoute page={page} />
+                ) : (
+                  <Layout>
+                    <PageRoute page={page} />
+                  </Layout>
+                )
+              }
             />
-          ))}
-          <Route path="*" element={<div className="not-found">Page not found</div>} />
-        </Routes>
-      </Layout>
+          );
+        })}
+        <Route path="*" element={<Layout><div className="not-found">Page not found</div></Layout>} />
+      </Routes>
     </BrowserRouter>
   );
 }
